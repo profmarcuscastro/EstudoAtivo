@@ -1,0 +1,56 @@
+# bst 
+
+# node
+#left lesser than bellow
+#right upper than bellow
+
+class Node:
+    def __init__(self,key):
+        self.left =  None
+        self.right = None
+        self.val = key # value of node
+
+
+# insert method with a given value
+
+def insert(root,key):
+    if root is None:
+        return Node(key)# if root not exixts you create de root here
+
+    else:#if existis
+        if root.val==key:  #the node already exists
+            return root
+        elif root.val < key:
+            root.right = insert(root.right,key)
+        else:
+            root.left = insert(root.left,key)
+    return root#return de node updated
+
+    # A utility function to do inorder tree traversal
+def inorder(root):
+    if root:
+        inorder(root.left)
+        print(root.val, end =" ")
+        inorder(root.right)
+ 
+ 
+# Driver program to test the above functions
+if __name__ == '__main__':
+ 
+    # Let us create the following BST
+    # 50
+    #  /     \
+    # 30     70
+    #  / \ / \
+    # 20 40 60 80
+ 
+    r = Node(50)
+    r = insert(r, 30)
+    r = insert(r, 20)
+    r = insert(r, 40)
+    r = insert(r, 70)
+    r = insert(r, 60)
+    r = insert(r, 80)
+ 
+    # Print inoder traversal of the BST
+    inorder(r)
